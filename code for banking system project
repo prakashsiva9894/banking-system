@@ -1,0 +1,28 @@
+import pandas as pd
+
+# Load the dataset
+df = pd.read_csv('C:/Users/praka/Downloads/downloaded-file/bankmarketing.csv')
+
+# Display the first few rows
+df.head()
+
+print("data types is",df.dtypes)
+print("\n\n missing values \n\n",df.isnull().sum())
+df.describe()
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Plot the distribution of the target variable
+sns.countplot(x='y', data=df, color='#743089')
+plt.title("Distribution of Target Variable")
+plt.xlabel("Target")
+plt.ylabel("Count")
+plt.show()
+
+sample=df.corr(numeric_only=True)
+plt.figure(figsize=(10,10))
+sns.heatmap(sample, annot=True, cmap='coolwarm')
+plt.title("Correlation Matrix")
+plt.show()
+
